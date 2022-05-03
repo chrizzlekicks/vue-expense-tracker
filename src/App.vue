@@ -1,17 +1,38 @@
-<script setup>
-import InputField from './components/InputField.vue';
-import Expense from './components/Expense.vue';
-</script>
-
 <template>
 	<h1>Expense Tracker</h1>
 	<InputField />
-	<ul id="expense-wrapper">
-		<Expense />
-		<Expense />
-		<Expense />
-	</ul>
+	<Expenses :expenses="expenses" />
 </template>
+
+<script>
+import InputField from './components/InputField.vue';
+import Expenses from './components/Expenses.vue';
+
+export default {
+	name: 'App',
+	components: { InputField, Expenses },
+	data() {
+		return {
+			expenses: [],
+		};
+	},
+	methods() {
+		function addExpense(input) {
+			const newExpense = {
+				id: input.id,
+				value: input.value,
+			};
+			this.expenses.push(newExpense);
+		}
+	},
+	created() {
+		this.expenses = [
+			{ id: 0, value: 12 },
+			{ id: 1, value: 187 },
+		];
+	},
+};
+</script>
 
 <style>
 #app {
@@ -24,14 +45,5 @@ import Expense from './components/Expense.vue';
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-#expense-wrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	max-width: 1140px;
-	width: 100%;
-	margin: 1rem;
 }
 </style>

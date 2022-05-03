@@ -1,21 +1,28 @@
-<script setup></script>
-
 <template>
-	<li>
-		<h2>12</h2>
+	<div class="expense">
+		<h2>{{ expense.value }}</h2>
 		<button>Delete</button>
-	</li>
+	</div>
 </template>
 
+<script>
+export default {
+	name: 'Expense',
+	props: {
+		expense: Object,
+	},
+};
+</script>
+
 <style scoped>
-li {
-	padding: 1rem;
+.expense {
+	padding: 0.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	border: 1px solid #2c3e50;
 	border-radius: 1rem;
-	width: 100%;
+	width: auto;
 	margin: 0.5rem;
 }
 h2 {
