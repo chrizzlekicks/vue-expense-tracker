@@ -1,7 +1,8 @@
 <template>
-	<section class="expenses" v-for="expense in expenses">
+	<section class="expenses">
 		<Expense
 			:expense="expense"
+			v-for="expense in expenses"
 			@delete-expense="$emit('delete-expense', expense.id)"
 		/>
 	</section>
@@ -28,6 +29,6 @@ export default {
 	flex-direction: column;
 	width: 100%;
 	max-width: 1140px;
-	margin: 0.5rem;
+	margin: 40px 0.5rem;
 }
 </style>

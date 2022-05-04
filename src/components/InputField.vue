@@ -50,7 +50,6 @@ export default {
 <style>
 .wrapper {
 	display: flex;
-	flex: 1;
 	margin-bottom: 1rem;
 }
 .input {

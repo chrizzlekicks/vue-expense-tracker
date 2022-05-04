@@ -1,19 +1,24 @@
 <template>
-	<h1>Expense Tracker</h1>
-	<InputField @add-expense="addExpense" />
-	<Expenses :expenses="expenses" @delete-expense="deleteExpense" />
+	<EditExpense v-if="showEditExpense" />
+	<main>
+		<h1>Expense Tracker</h1>
+		<InputField @add-expense="addExpense" />
+		<Expenses :expenses="expenses" @delete-expense="deleteExpense" />
+	</main>
 </template>
 
 <script>
 import InputField from './components/InputField.vue';
 import Expenses from './components/Expenses.vue';
+import EditExpense from './components/EditExpense.vue';
 
 export default {
 	name: 'App',
-	components: { InputField, Expenses },
+	components: { InputField, Expenses, EditExpense },
 	data() {
 		return {
 			expenses: [],
+			showEditExpense: false,
 		};
 	},
 	methods: {
@@ -34,16 +39,17 @@ export default {
 };
 </script>
 
-<style>
-#app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-	margin-top: 60px;
+<style scoped>
+main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+h1 {
+	margin-bottom: 40px;
 }
 </style>

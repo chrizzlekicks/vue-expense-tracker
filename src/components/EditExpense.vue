@@ -18,14 +18,25 @@ export default {
 
 <style scoped>
 main {
-	background-color: rgba(255, 255, 255, 0.85);
+	background-color: rgba(247, 247, 247, 0.75);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	position: absolute;
+	z-index: 1;
+	display: grid;
+	place-items: center;
 }
 article {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 10rem;
-	height: auto;
+	justify-content: center;
+	width: 450px;
+	height: 125px;
 	border: 1px solid #c2c2c2;
+	border-radius: 10px;
+	background-color: #eee;
+	box-shadow: 3px 12px 20px rgba(97, 100, 91, 0.2);
 }
 </style>
