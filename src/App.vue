@@ -1,7 +1,7 @@
 <template>
 	<h1>Expense Tracker</h1>
 	<InputField />
-	<Expenses :expenses="expenses" />
+	<Expenses :expenses="expenses" @delete-expense="deleteExpense" />
 </template>
 
 <script>
@@ -16,14 +16,10 @@ export default {
 			expenses: [],
 		};
 	},
-	methods() {
-		function addExpense(input) {
-			const newExpense = {
-				id: input.id,
-				value: input.value,
-			};
-			this.expenses.push(newExpense);
-		}
+	methods: {
+		deleteExpense(id) {
+			this.expenses = this.expenses.filter((expense) => expense.id !== id);
+		},
 	},
 	created() {
 		this.expenses = [

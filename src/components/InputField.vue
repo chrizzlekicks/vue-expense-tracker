@@ -1,13 +1,29 @@
 <template>
-	<div class="wrapper">
-		<input class="input" type="text" placeholder="Enter your expense here" />
+	<form class="wrapper" @submit.prevent="">
+		<input
+			class="input"
+			type="text"
+			name="expense"
+			v-model="inputValue"
+			placeholder="Enter your expense here"
+		/>
 		<button class="input-btn">Add Expense</button>
-	</div>
+	</form>
 </template>
 
 <script>
 export default {
 	name: 'InputField',
+	props: {
+		addExpense: {
+			type: Function,
+		},
+	},
+	data() {
+		return {
+			inputValue: '',
+		};
+	},
 };
 </script>
 

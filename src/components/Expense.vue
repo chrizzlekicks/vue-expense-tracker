@@ -1,7 +1,7 @@
 <template>
 	<div class="expense">
 		<h2>{{ expense.value }}</h2>
-		<button>Delete</button>
+		<button @click="$emit('delete-expense', expense.id)">Delete</button>
 	</div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
 	name: 'Expense',
 	props: {
-		expense: Object,
+		expense: { type: Object },
 	},
 };
 </script>

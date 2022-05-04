@@ -1,6 +1,9 @@
 <template>
 	<section class="expenses" v-for="expense in expenses" :key="expense.id">
-		<Expense :expense="expense" />
+		<Expense
+			:expense="expense"
+			@delete-expense="$emit('delete-expense', expense.id)"
+		/>
 	</section>
 </template>
 
