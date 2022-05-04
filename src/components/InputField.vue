@@ -1,10 +1,10 @@
 <template>
-	<form class="wrapper" @submit.prevent="">
+	<form class="wrapper" @submit.prevent="onSubmit">
 		<input
 			class="input"
 			type="text"
-			name="expense"
-			v-model="inputValue"
+			name="exxpense"
+			v-model="exxpense"
 			placeholder="Enter your expense here"
 		/>
 		<button class="input-btn">Add Expense</button>
@@ -21,8 +21,28 @@ export default {
 	},
 	data() {
 		return {
-			inputValue: '',
+			exxpense: '',
 		};
+	},
+	methods: {
+		onSubmit() {
+			if (!this.exxpense) {
+				alert('Please provide an expense');
+				return;
+			}
+
+			let date = new Date();
+
+			const newExpense = {
+				id: Math.floor(Math.random() * 100000),
+				date: date.toLocaleString(),
+				value: this.exxpense,
+			};
+
+			this.$emit('add-expense', newExpense);
+
+			this.exxpense = '';
+		},
 	},
 };
 </script>

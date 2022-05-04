@@ -1,5 +1,5 @@
 <template>
-	<section class="expenses" v-for="expense in expenses" :key="expense.id">
+	<section class="expenses" v-for="expense in expenses">
 		<Expense
 			:expense="expense"
 			@delete-expense="$emit('delete-expense', expense.id)"
@@ -18,6 +18,7 @@ export default {
 	components: {
 		Expense,
 	},
+	emits: ['delete-expense'],
 };
 </script>
 

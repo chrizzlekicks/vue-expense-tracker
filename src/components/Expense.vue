@@ -1,7 +1,11 @@
 <template>
-	<div class="expense">
-		<h2>{{ expense.value }}</h2>
-		<button @click="$emit('delete-expense', expense.id)">Delete</button>
+	<div class="expense" :key="expense.id">
+		<h2>Euro: {{ expense.value }}</h2>
+		<p>{{ expense.date }}</p>
+		<section>
+			<button class="edit-btn">Edit</button>
+			<button class="delete-btn" @click="onClick">Delete</button>
+		</section>
 	</div>
 </template>
 
@@ -10,6 +14,11 @@ export default {
 	name: 'Expense',
 	props: {
 		expense: { type: Object },
+	},
+	methods: {
+		onClick(id) {
+			this.$emit('delete-expense', id);
+		},
 	},
 };
 </script>
@@ -30,10 +39,22 @@ h2 {
 }
 button {
 	padding: 1rem;
-	background-color: #aa2a2a;
-	border: 1px solid #aa2a2a;
+	margin: 0.25rem;
 	color: #fff;
 	border-radius: 0.5rem;
 	cursor: pointer;
+}
+section {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.delete-btn {
+	background-color: #aa2a2a;
+	border: 1px solid #aa2a2a;
+}
+.edit-btn {
+	background-color: #0a9ba6;
+	border: 1px solid #0a9ba6;
 }
 </style>
