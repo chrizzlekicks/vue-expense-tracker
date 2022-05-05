@@ -3,8 +3,8 @@
 		<h2>Euro: {{ expense.value }}</h2>
 		<p>{{ expense.date }}</p>
 		<section>
-			<button class="edit-btn">Edit</button>
-			<button class="delete-btn" @click="onClick">Delete</button>
+			<button class="edit-btn" @click="onShowEdit">Edit</button>
+			<button class="delete-btn" @click="onDelete">Delete</button>
 		</section>
 	</div>
 </template>
@@ -16,8 +16,11 @@ export default {
 		expense: { type: Object },
 	},
 	methods: {
-		onClick(id) {
+		onDelete(id) {
 			this.$emit('delete-expense', id);
+		},
+		onShowEdit(id) {
+			this.$emit('show-edit', id);
 		},
 	},
 };

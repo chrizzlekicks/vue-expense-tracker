@@ -1,9 +1,17 @@
 <template>
-	<EditExpense v-if="showEditExpense" />
+	<EditExpense v-if="showEditExpense" @hide-edit="hideEdit" />
 	<main>
 		<h1>Expense Tracker</h1>
-		<InputField @add-expense="addExpense" />
-		<Expenses :expenses="expenses" @delete-expense="deleteExpense" />
+		<InputField
+			@add-expense="addExpense"
+			inputText="Enter your expense here"
+			btnText="Add expense"
+		/>
+		<Expenses
+			:expenses="expenses"
+			@delete-expense="deleteExpense"
+			@show-edit="showEdit"
+		/>
 	</main>
 </template>
 
@@ -26,8 +34,14 @@ export default {
 			this.expenses.push(newExpense);
 		},
 		deleteExpense(id) {
-			console.log(id);
 			this.expenses = this.expenses.filter((expense) => expense.id !== id);
+		},
+		showEdit(value) {
+			this.showEditExpense = true;
+			console.log(value);
+		},
+		hideEdit() {
+			this.showEditExpense = false;
 		},
 	},
 	created() {

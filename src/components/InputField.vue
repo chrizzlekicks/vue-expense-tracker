@@ -5,9 +5,9 @@
 			type="text"
 			name="exxpense"
 			v-model="exxpense"
-			placeholder="Enter your expense here"
+			:placeholder="[[inputText]]"
 		/>
-		<button class="input-btn">Add Expense</button>
+		<button class="input-btn">{{ btnText }}</button>
 	</form>
 </template>
 
@@ -18,10 +18,19 @@ export default {
 		addExpense: {
 			type: Function,
 		},
+		inputText: {
+			type: String,
+		},
+		btnText: {
+			type: String,
+		},
+		expense: {
+			type: Object,
+		},
 	},
 	data() {
 		return {
-			exxpense: '',
+			exxpense: expense.value ?? '',
 		};
 	},
 	methods: {

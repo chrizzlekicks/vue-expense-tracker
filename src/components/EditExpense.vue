@@ -2,7 +2,8 @@
 	<main>
 		<article>
 			<h3>Edit your expense</h3>
-			<InputField />
+			<InputField inputText="Modify your expense" btnText="Edit expense" />
+			<p @click="onHideEdit">Close</p>
 		</article>
 	</main>
 </template>
@@ -13,6 +14,16 @@ import InputField from './InputField.vue';
 export default {
 	name: 'EditExpense',
 	components: { InputField },
+	props: {
+		expenses: {
+			type: Array,
+		},
+	},
+	methods: {
+		onHideEdit() {
+			this.$emit('hide-edit');
+		},
+	},
 };
 </script>
 
@@ -33,10 +44,23 @@ article {
 	align-items: center;
 	justify-content: center;
 	width: 450px;
-	height: 125px;
+	height: auto;
 	border: 1px solid #c2c2c2;
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: #fff;
 	box-shadow: 3px 12px 20px rgba(97, 100, 91, 0.2);
+	padding: 1rem;
+}
+h3 {
+	margin-bottom: 1rem;
+}
+p {
+	margin-top: 0.75rem;
+	text-decoration: underline;
+	color: #c2c2c2;
+	cursor: pointer;
+}
+p:hover {
+	color: #2c3e50;
 }
 </style>

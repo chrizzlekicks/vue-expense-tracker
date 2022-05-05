@@ -1,9 +1,10 @@
 <template>
 	<section class="expenses">
 		<Expense
-			:expense="expense"
 			v-for="expense in expenses"
+			:expense="expense"
 			@delete-expense="$emit('delete-expense', expense.id)"
+			@show-edit="$emit('show-edit', expense.value)"
 		/>
 	</section>
 </template>
@@ -14,7 +15,7 @@ import Expense from './Expense.vue';
 export default {
 	name: 'Expenses',
 	props: {
-		expenses: Array,
+		expenses: { type: Array },
 	},
 	components: {
 		Expense,
